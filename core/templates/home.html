@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <div id="wrapper">
+
+        <div id="header" class="area">
+
+            <div id="bar">
+                <div class="bar-line"></div>
+                <div class="bar-shadow"></div>
+                
+                <div class="block">
+                    <div id="logo"></div>
+                </div>
+            </div>
+
+            <div id="nav">
+                <div class="block">
+                    <ul class="items">
+                        {% if "access_token" in request.session.keys %}
+                        <li><a href="/csb">HOME</a></li>
+                        {% else %}
+                        <li><a href="/">HOME</a></li>
+                        {% endif %}
+
+                        {% if "access_token" in request.session.keys %}
+                        <li><a href="/auth/logout">LOGOUT</a></li>
+                        {% else %}
+                        <li><a href="/csb">LOGIN</a></li>
+                        {% endif %}
+
+                        <li><a href="https://api.23andme.com/" target="_blank">API INFO</a></li>
+
+                        {% comment %}
+                        <li><a href="https://github.com/jsh/23andme" target="_blank">SOURCE</a></li>
+                        <li><a href="https://api.23andme.com/apply/" target="_blank">APPLY</a></li>
+                        {% endcomment %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        {% block docs %}
+        <div class="section">
+            <div class="block">
+                <div class="content">
+                    <h2>23andCSB API Demo</h2>
+                    {% if "access_token" in request.session.keys %}
+                    <p>Click LOGOUT to log out of this app.</p>
+                    {% else %}
+                    <p>Click LOGIN above to log in to this app.</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <div class="section-line"></div>
+        {% endblock %}
+
+        {% block demo %}
+        {% endblock %}
+
+    </div>
+
+{% endblock %}
+
+{% block extra_body_js %}
+    <script>
+
+    </script>
+{% endblock %}

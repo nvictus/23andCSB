@@ -1,0 +1,73 @@
+{% extends "home.html" %}
+
+{% block demo %}
+<div id="demo">
+    <div class="block">
+    <div class="username">{{ request.session.name }}</div>
+
+       <div class="cols two demo">
+            <div class="col left">
+            	<h1 class="snphead">Request type</h1>
+            	<ul class="snplist">
+            		<li class="snp">names</li>
+            		<li class="desc">In case you've forgotten who you are.</li>
+
+            		<li class="snp">risks</li>
+            		<li class="desc">This looks like risky business!</li>
+
+            		<li class="snp">carriers</li>
+            		<li class="desc">Don't get carried away, now!</li>
+
+            		<li class="snp">drug_responses</li>
+            		<li class="desc">The correct response is to always say NO!</li>
+
+            		<li class="snp">traits</li>
+            		<li class="desc">Got traits?</li>
+
+            		<li class="snp">neanderthal</li>
+            		<li class="desc">Human, not all too human?</li>
+            	</ul>
+ 			</div>
+            <div class="col right">
+            	<h1>Response</h1>
+                <div class="snpdesc">
+                    <div class="chosensnp">
+                    </div> 
+                    <div class="chosendesc">
+                    </div>
+                </div>
+
+                <div id="tabs">
+                </div>
+
+                <div class="sarea">
+                    <div class="scontent">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="clearfix"></div>
+    </div>
+
+    <div class="section-line"></div>
+
+    <div class="section">
+        <div class="block">
+            <div class="content">
+                <form action="">
+                    <input type="checkbox" name="demo" value="False">Use demo data<br>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
+
+{% block extra_body_js %}
+    <script>
+
+    </script>
+{% endblock %}
