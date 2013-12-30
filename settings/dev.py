@@ -3,6 +3,18 @@ from .base import *
 DEBUG = get_env_setting('DEBUG')
 TEMPLATE_DEBUG = DEBUG
 SECRET_KEY = get_env_setting('SECRET_KEY')
+ALLOWED_HOSTS = ['*']
+
+# 23andMe API
+# TODO: Make these equal to what's in your dev dashboard at
+# http://api.23andme.com/dev/
+INSTALLED_APPS += (
+    'apps.api',
+    'apps.csb',
+)
+CLIENT_ID = get_env_setting('CLIENT_ID')
+CLIENT_SECRET = get_env_setting('CLIENT_SECRET')
+CALLBACK_URL = get_env_setting('CALLBACK_URL')
 
 ### Dev database config
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#databases
@@ -17,19 +29,6 @@ DATABASES = {
     }
 }
 ###
-
-# 23andMe API
-# TODO: Make these equal to what's in your dev dashboard at
-# http://api.23andme.com/dev/
-INSTALLED_APPS += (
-    'apps.api',
-    'apps.csb',
-)
-CLIENT_ID = get_env_setting('CLIENT_ID')
-CLIENT_SECRET = get_env_setting('CLIENT_SECRET')
-CALLBACK_URL = get_env_setting('CALLBACK_URL')
-
-
 
 ### Cache config
 # # See: https://docs.djangoproject.com/en/dev/ref/settings/#caches

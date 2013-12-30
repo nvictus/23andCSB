@@ -8,16 +8,32 @@ SECRET_KEY = get_env_setting('SECRET_KEY')
 ########## END SECRET CONFIGURATION
 
 ########## HOST CONFIGURATION
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = [get_env_setting('HOSTNAME')]
 ########## END HOST CONFIGURATION
 
+# 23andMe API
+# TODO: Make these equal to what's in your dev dashboard at
+# http://api.23andme.com/dev/
+INSTALLED_APPS += (
+    'apps.api',
+    'apps.csb',
+)
+CLIENT_ID = get_env_setting('CLIENT_ID')
+CLIENT_SECRET = get_env_setting('CLIENT_SECRET')
+CALLBACK_URL = get_env_setting('CALLBACK_URL')
+
 ########## DATABASE CONFIGURATION
+import os
 import dj_database_url
 DATABASES['default'] =  dj_database_url.config()
 ########## END DATABASE CONFIGURATION
 
 ########## CACHE CONFIGURATION
-CACHES = {}
+# CACHES = {
+#     'default': {
+#         'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+#     }
+# }
 ########## END CACHE CONFIGURATION
 
 ########## EMAIL CONFIGURATION

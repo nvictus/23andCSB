@@ -1,7 +1,7 @@
 import os
-env = os.environ.get('ENVIRONMENT', 'development')
+env = os.environ.get('ENVIRONMENT', 'DEVELOPMENT')
 
-if env == 'production':
+if env == 'PRODUCTION':
     from .prod import *
 else:
     from .dev import *
