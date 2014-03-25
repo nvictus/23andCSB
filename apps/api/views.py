@@ -27,24 +27,28 @@ def get_resource(request, resource):
         return HttpResponse(c._get_resource_demo(resource))
 
     user = c.get_user()
-    data = []
-    for profile in user['profile']:
+    d = json.JSONDecoder()
+    e = json.JSONEncoder()
+
+    data = {}
+    for profile in user['profiles']:
         profile_id = profile['id']
         if resource == 'names':
-            data.append(c.get_names())
+            data[profile_id] = d.decode(c.get_names())
         elif resource == 'risks':
-            data.append(c.get_risks(profile_id))
+            data[profile_id] = d.decode(c.get_risks(profile_id))
         elif resource == 'carriers':
-            data.append(c.get_carriers(profile_id))
+            data[profile_id] = d.decode(c.get_carriers(profile_id))
         elif resource == 'drug_responses':
-            data.append(c.get_drug_responses(profile_id))
+            data[profile_id] = d.decode(c.get_drug_responses(profile_id))
         elif resource == 'traits':
-            data.append(c.get_traits(profile_id))
+            data[profile_id] = d.decode(c.get_traits(profile_id))
         elif resource == 'neanderthal':
-            data.append(c.get_neanderthal(profile_id))
+            data[profile_id] = d.decode(c.get_neanderthal(profile_id))
         else:
             raise Exception("invalid API resource requested")
-
+    
+    data = e.encode(data)
     return HttpResponse(data, mimetype="application/json")
 
 def callback(request):
